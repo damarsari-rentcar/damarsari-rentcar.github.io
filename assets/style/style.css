@@ -11,13 +11,21 @@ body {
     background-color: #f8f9fa;
     color: #333;
 }
+h1.text-light {
+    font-size: 26px; /* Atur ukuran font h1 */
+}
+
+p.text-light {
+    font-size: 14px; /* Atur ukuran font paragraf */
+}
 
 .container {
     width: 90%;
     max-width: 1200px;
 }
+
 .container.section {
-    margin-top: 100px; 
+    margin-top: 50px; 
 }
 
 .gallery {
@@ -33,7 +41,7 @@ body {
 header {
     background-color: #343a40;
     color: #fff;
-    padding: 20px 0;
+
     text-align: center;
 }
 
@@ -50,16 +58,18 @@ header p {
     margin: 0;
 }
 
-
 /* Navbar */
 .navbar {
     background-color: #343a40;
-    padding: 10px 0; 
-     margin-bottom: 20px;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    position: relative;
+    height: 80px; 
 }
 
+
 .navbar-brand {
-    font-size: 20px; 
+    font-size: 18px; 
     font-weight: 700;
     margin-right: 20px; 
     display: flex; 
@@ -68,11 +78,15 @@ header p {
     text-decoration: none;
 }
 
+.navbar-brand img {
+    width: 40px; /* Atur ukuran gambar/logo pada navbar-brand */
+}
+
 .navbar-nav .nav-link {
     color: #fff;
-    font-size: 16px; 
+    font-size: 14px; /* Atur ukuran font nav-link */
     font-weight: 500;
-    padding: 10px 15px; 
+    padding: 5px 10px; /* Atur padding untuk nav-link */
     transition: color 0.3s ease;
 }
 
@@ -93,7 +107,7 @@ h2 {
     margin-bottom: 30px;
 }
 
-p {
+.content p {
     font-size: 16px;
     font-weight: 400;
     line-height: 1.6;
@@ -254,7 +268,7 @@ footer p {
     font-size: 16px;
     font-weight: 400;
     line-height: 1.6;
-    color: #555;
+    color: #ffffff;
     margin-bottom: 20px;
     text-align: center;
 }
