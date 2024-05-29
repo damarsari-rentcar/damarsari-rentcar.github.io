@@ -1,294 +1,619 @@
 /* Reset */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    background-color: #f8f9fa;
-    color: #333;
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+   line-height: 1.6;
+   background-color: #f8f9fa;
+   color: #333;
 }
 
 h1.text-light {
-    font-size: 26px;
+   font-size: 26px;
 }
 
 p.text-light {
-    font-size: 14px; 
+   font-size: 14px;
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
+   width: 90%;
+   max-width: 1200px;
 }
 
 .container.section {
-    margin-top: 50px; 
+   margin-top: 50px;
 }
 
 .gallery {
-    margin-bottom: 20px;
+   margin-bottom: 20px;
 }
 
 .content p {
-    text-align: justify;
-    margin-bottom: 15px;
+   text-align: justify;
+   margin-bottom: 15px;
 }
 
 /* Header */
 header {
-    background-color: #343a40;
-    color: #fff;
-    text-align: center;
+   background-color: #343a40;
+   color: #fff;
+   text-align: center;
 }
 
 header h1 {
-    font-size: 36px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin: 0;
+   font-size: 36px;
+   font-weight: 700;
+   text-transform: uppercase;
+   margin: 0;
 }
 
 header p {
-    font-size: 18px;
-    font-weight: 400;
-    margin: 0;
+   font-size: 18px;
+   font-weight: 400;
+   margin: 0;
 }
 
 /* Navbar */
 .navbar {
-    background-color: #343a40;
-    padding: 10px 0;
-    margin-bottom: 20px;
-    position: relative;
-    height: 80px; 
+   background-color: #343a40;
+   padding: 10px 0;
+   margin-bottom: 20px;
+   position: relative;
+   height: 80px;
 }
 
 .navbar-brand {
-    font-size: 18px; 
-    font-weight: 700;
-    margin-right: 20px; 
-    display: flex; 
-    align-items: center; 
-    color: #fff;
-    text-decoration: none;
+   font-size: 18px;
+   font-weight: 700;
+   margin-right: 20px;
+   display: flex;
+   align-items: center;
+   color: #fff;
+   text-decoration: none;
 }
 
 .navbar-brand img {
-    width: 40px; /* Atur ukuran gambar/logo pada navbar-brand */
+   width: 40px; /* Atur ukuran gambar/logo pada navbar-brand */
 }
 
 .navbar-nav .nav-link {
-    color: #fff;
-    font-size: 14px; /* Atur ukuran font nav-link */
-    font-weight: 500;
-    padding: 5px 10px; /* Atur padding untuk nav-link */
-    transition: color 0.3s ease;
+   color: #fff;
+   font-size: 14px; /* Atur ukuran font nav-link */
+   font-weight: 500;
+   padding: 5px 10px; /* Atur padding untuk nav-link */
+   transition: color 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #ccc;
+   color: #ccc;
 }
 
 /* Section */
 .section {
-    padding: 40px 0;
-    margin-top: 70px; 
+   padding: 40px 0;
+   margin-top: 70px;
 }
 
 h2 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #343a40;
-    margin-bottom: 30px;
+   font-size: 24px;
+   font-weight: 700;
+   color: #343a40;
+   margin-bottom: 30px;
 }
 
 .content p {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #555;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 1.6;
+   color: #555;
 }
 
 /* Benefit */
 .benefit {
-    display: flex;
-    align-items: center;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+   display: flex;
+   align-items: center;
+   padding: 30px;
+   background-color: #fff;
+   border-radius: 10px;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+   transition: all 0.3s ease;
 }
 
 .benefit img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-right: 30px;
+   width: 100px;
+   height: 100px;
+   border-radius: 50%;
+   margin-right: 30px;
 }
 
 #benefits h3 {
-    font-size: 24px;
+   font-size: 24px;
 }
 
 .benefit h4 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #343a40;
+   font-size: 18px;
+   font-weight: 700;
+   color: #343a40;
 }
 
 .benefit p {
-    font-size: 16px;
-    font-weight: 400;
-    color: #555;
+   font-size: 16px;
+   font-weight: 400;
+   color: #555;
 }
 
 .benefit:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+   transform: translateY(-5px);
+   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 #choose-us .highlight {
-    padding: 40px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+   padding: 40px;
+   background-color: #fff;
+   border-radius: 10px;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #choose-us h2 {
-    font-size: 24px; 
-    color: #343a40;
-    margin-bottom: 20px;
+   font-size: 24px;
+   color: #343a40;
+   margin-bottom: 20px;
 }
 
 #choose-us .highlight h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #343a40;
-    margin-bottom: 20px;
+   font-size: 24px;
+   font-weight: 700;
+   color: #343a40;
+   margin-bottom: 20px;
 }
 
 #choose-us .highlight p {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 20px;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 1.6;
+   color: #555;
+   margin-bottom: 20px;
 }
 
 #choose-us .highlight:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+   transform: translateY(-5px);
+   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 #choose-us .highlight:hover p {
-    transform: translateY(-3px); 
+   transform: translateY(-3px);
+}
+#pricing {
+   padding: 40px 0;
 }
 
-
-
+#pricing h2 {
+   font-size: 24px;
+   font-weight: 700;
+   color: #343a40;
+   margin-bottom: 20px;
+   text-align: center;
+}
 /* Table */
 .table {
-    width: 100%;
-    margin-top: 40px;
-    border-collapse: collapse;
+   width: 100%;
+   margin-top: 40px;
+   border-collapse: collapse;
 }
 
 .table th,
 .table td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #dee2e6;
+   padding: 12px; /* Mengurangi padding agar sesuai dengan selera */
+   text-align: left; /* Menyesuaikan teks menjadi kiri */
+   border-bottom: 1px solid #dee2e6;
 }
 
 .table th {
-    background-color: #343a40;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: uppercase;
+   background-color: #343a40;
+   color: #fff;
+   font-size: 16px; /* Mengurangi ukuran font */
+   font-weight: 700;
+   text-transform: uppercase;
+}
+
+.table td {
+   font-size: 14px; /* Mengurangi ukuran font */
+}
+
+.table tbody tr:nth-child(even) {
+   background-color: #f8f9fa; /* Menambahkan latar belakang pada baris genap */
 }
 
 /* Footer */
 footer {
-    background-color: #343a40;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    font-size: 14px;
+   background-color: #343a40;
+   color: #fff;
+   padding: 20px 0;
+   text-align: center;
+   font-size: 14px;
 }
 
 footer p {
-    margin: 0;
+   margin: 0;
+}
+/* Formulir Penyewaan Mobil */
+#form {
+    padding: 40px 0;
+}
+
+#form h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Formulir Penyewaan Mobil */
+#form {
+    padding: 40px 0;
+}
+
+#form h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#form p {
+    color: red;
+    font-size: 12px;
+    text-align: center;
+}
+
+#rentalForm {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4 5L0 0h8zM0 8h8V6H0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px top 50%;
+    background-size: 8px auto;
+    padding-right: 30px;
+}
+
+.Btn {
+  width: 130px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(15, 15, 15);
+  border: none;
+  color: white;
+  font-weight: 600;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+}
+
+.svgIcon {
+  width: 16px;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.Btn::before {
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  content: "";
+  background-color: white;
+  border-radius: 50%;
+  left: -100%;
+  top: 0;
+  transition-duration: .3s;
+  mix-blend-mode: difference;
+}
+
+.Btn:hover::before {
+  transition-duration: .3s;
+  transform: translate(100%,-50%);
+  border-radius: 0;
+}
+
+.Btn:active {
+  transform: translate(5px,5px);
+  transition-duration: .3s;
 }
 
 /* Card styles */
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
 }
 
 .card {
-    width: 300px;
-    margin: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+   width: 300px;
+   margin: 20px;
+   padding: 20px;
+   background-color: #fff;
+   border-radius: 10px;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+   transition: all 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+   transform: translateY(-5px);
+   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .card h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #343a40;
-    margin-bottom: 15px;
+   font-size: 24px;
+   font-weight: 700;
+   color: #343a40;
+   margin-bottom: 15px;
 }
 
 .card ul {
-    padding-left: 20px;
+   padding-left: 20px;
 }
 
 .card ul li {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 10px;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 1.6;
+   color: #555;
+   margin-bottom: 10px;
 }
 
 /* Contact */
 .contact {
-    padding: 40px 0;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+   padding: 40px 0;
+   background-color: #fff;
+   border-radius: 10px;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .contact h2 {
-    font-size: 36px;
-    font-weight: 700;
-    color: #343a40;
-    margin-bottom: 30px;
-    text-align: center;
+   font-size: 36px;
+   font-weight: 700;
+   color: #343a40;
+   margin-bottom: 30px;
+   text-align: center;
 }
 
 .contact p {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 20px;
-    text-align: center;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 1.6;
+   color: #555;
+   margin-bottom: 20px;
+   text-align: center;
+}
+
+/* Card styles for terms */
+.card-container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.card {
+   width: 300px;
+   margin: 20px;
+   padding: 20px;
+   background-color: #fff;
+   border-radius: 10px;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+   transition: all 0.3s ease;
+}
+
+.card:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+   font-size: 24px;
+   font-weight: 700;
+   color: #343a40;
+   margin-bottom: 15px;
+}
+
+.card ul {
+   padding-left: 20px;
+}
+
+.card ul li {
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 1.6;
+   color: #555;
+   margin-bottom: 10px;
+}
+
+/* Terms styles */
+#terms {
+   padding: 40px 0;
+   background-color: #fff;
+}
+
+#terms h2 {
+   font-size: 24px;
+   color: #343a40;
+   margin-bottom: 30px;
+   text-align: left;
+}
+
+.card-container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.card {
+   width: 300px;
+   margin: 20px;
+   padding: 20px;
+   background-color: #fff;
+   border-radius: 10px;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+   transition: all 0.3s ease;
+}
+
+.card h3 {
+   font-size: 20px;
+   font-weight: 700;
+   color: #343a40;
+   margin-bottom: 15px;
+}
+.card ul {
+   padding-left: 20px;
+}
+
+.card ul li {
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 1.6;
+   color: #555;
+   margin-bottom: 10px;
+}
+/* Untuk handphone dengan lebar maksimum 767px */
+@media (max-width: 767px) {
+   /* Navbar */
+   .navbar-brand img {
+      width: 25px; /* Atur ukuran gambar/logo pada navbar-brand untuk handphone */
+   }
+
+   .navbar-nav .nav-link {
+      padding: 5px;
+      font-size: 12px; /* Atur ukuran font nav-link untuk handphone */
+   }
+
+   /* Section */
+   h2 {
+      font-size: 18px; /* Atur ukuran font h2 untuk handphone */
+      margin-bottom: 12px;
+   }
+   #pricing h2 {
+      font-size: 20px;
+   }
+
+   .table th,
+   .table td {
+      font-size: 12px;
+   }
+   .content p {
+      font-size: 14px; /* Atur ukuran font paragraf untuk handphone */
+      margin-bottom: 8px;
+   }
+
+   /* Benefit */
+   .benefit img {
+      width: 50px; /* Atur ukuran gambar pada benefit untuk handphone */
+      height: 50px;
+      margin-right: 10px;
+   }
+
+   #benefits h3 {
+      font-size: 16px; /* Atur ukuran font h3 pada benefit untuk handphone */
+   }
+
+   .benefit h4 {
+      font-size: 12px; /* Atur ukuran font h4 pada benefit untuk handphone */
+   }
+
+   .benefit p {
+      font-size: 12px; /* Atur ukuran font paragraf pada benefit untuk handphone */
+   }
+
+   /* Highlight */
+   #choose-us h2 {
+      font-size: 16px; /* Atur ukuran font h2 pada highlight untuk handphone */
+      margin-bottom: 12px;
+   }
+
+   #choose-us .highlight h3 {
+      font-size: 16px; /* Atur ukuran font h3 pada highlight untuk handphone */
+      margin-bottom: 12px;
+   }
+
+   #choose-us .highlight p {
+      font-size: 12px; /* Atur ukuran font paragraf pada highlight untuk handphone */
+      margin-bottom: 12px;
+   }
+
+   /* Card */
+   .card {
+      width: calc(100% - 20px);
+      margin: 10px 0;
+   }
+
+   .card h3 {
+      font-size: 16px; /* Atur ukuran font h3 pada card untuk handphone */
+      margin-bottom: 10px;
+   }
+
+   .card ul li {
+      font-size: 12px; /* Atur ukuran font item daftar pada card untuk handphone */
+      margin-bottom: 6px;
+   }
+
+   /* Contact */
+   .contact h2 {
+      font-size: 20px; /* Atur ukuran font h2 pada contact untuk handphone */
+      margin-bottom: 12px;
+   }
+
+   .contact p {
+      font-size: 12px; /* Atur ukuran font paragraf pada contact untuk handphone */
+      margin-bottom: 6px;
+   }
+
+   /* Terms */
+   #terms h2 {
+      font-size: 16px; /* Atur ukuran font h2 pada terms untuk handphone */
+      margin-bottom: 12px;
+   }
+
+   .card ul li {
+      font-size: 12px; /* Atur ukuran font item daftar pada terms untuk handphone */
+      margin-bottom: 6px;
+   }
+   .table th,
+   .table td {
+      padding: 8px; /* Mengurangi padding untuk handphone */
+      font-size: 12px; /* Mengurangi ukuran font untuk handphone */
+   }
 }
