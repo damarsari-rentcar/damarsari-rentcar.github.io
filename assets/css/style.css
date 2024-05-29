@@ -31,8 +31,14 @@ p.text-light {
 
 .gallery {
    margin-bottom: 20px;
+   margin-top: 20px;
 }
-
+.carousel-inner {
+   margin-top: 30px; 
+}
+.content {
+   margin-top: 20px;
+}
 .content p {
    text-align: justify;
    margin-bottom: 15px;
@@ -62,9 +68,9 @@ header p {
 .navbar {
    background-color: #343a40;
    padding: 10px 0;
-   margin-bottom: 20px;
+   margin-bottom: 10px;
    position: relative;
-   height: 80px;
+   height: auto;
 }
 
 .navbar-brand {
@@ -111,6 +117,7 @@ h2 {
    font-weight: 400;
    line-height: 1.6;
    color: #555;
+   
 }
 
 /* Benefit */
@@ -191,57 +198,65 @@ h2 {
 }
 
 #pricing {
-    padding: 40px 0;
-    background-color: #f8f9fa; /* Light background color for section */
+   padding: 40px 0;
+   background-color: #f8f9fa;
+   /* Light background color for section */
 }
 
 #pricing h2 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #343a40;
-    margin-bottom: 30px;
-    text-align: center;
-    text-transform: uppercase; /* Uppercase for a more formal look */
+   font-size: 24px;
+   font-weight: 600;
+   color: #343a40;
+   margin-bottom: 30px;
+   text-align: center;
+   text-transform: uppercase;
+   /* Uppercase for a more formal look */
 }
 
 .table-container {
-    padding: 0 20px; /* Add padding to the container */
+   padding: 0 20px;
+   /* Add padding to the container */
 }
 
 .table {
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
-    border-collapse: collapse;
+   width: 100%;
+   margin-bottom: 1rem;
+   color: #212529;
+   border-collapse: collapse;
 }
 
-.table th, .table td {
-    padding: 12px;
-    text-align: left;
-    border-top: 1px solid #dee2e6;
+.table th,
+.table td {
+   padding: 12px;
+   text-align: left;
+   border-top: 1px solid #dee2e6;
 }
 
 .table thead th {
-    background-color: #343a40; /* Dark header background */
-    color: #fff; /* White text for header */
-    border-bottom: 2px solid #dee2e6;
+   background-color: #343a40;
+   /* Dark header background */
+   color: #fff;
+   /* White text for header */
+   border-bottom: 2px solid #dee2e6;
 }
 
 .table tbody tr:nth-child(odd) {
-    background-color: #f2f2f2; /* Light grey for alternating rows */
+   background-color: #f2f2f2;
+   /* Light grey for alternating rows */
 }
 
 .table tbody tr:hover {
-    background-color: #e9ecef; /* Slightly darker grey for hover effect */
+   background-color: #e9ecef;
+   /* Slightly darker grey for hover effect */
 }
 
 .table td {
-    font-size: 16px;
+   font-size: 16px;
 }
 
 .table th {
-    font-size: 16px;
-    font-weight: 600;
+   font-size: 16px;
+   font-weight: 600;
 }
 
 /* Footer */
@@ -513,6 +528,7 @@ footer .text-left {
    padding: 0 20px;
    max-width: 80%;
 }
+
 .card-container {
    display: flex;
    flex-wrap: wrap;
@@ -549,12 +565,28 @@ footer .text-left {
 }
 
 @media (max-width: 767px) {
-   .navbar-brand img {
-      width: 25px;
+   .navbar-brand {
+      margin-right: 0;
    }
-   .navbar-nav .nav-link {
-      padding: 5px;
-      font-size: 12px;
+
+   .navbar-brand img {
+      display: none;
+   }
+
+   .navbar-nav {
+      flex-direction: column;
+      padding-top: 20px;
+
+      .navbar-nav .nav-link {
+         color: #fff;
+         padding: 10px 20px;
+         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+         background-color: #343a40;
+      }
+
+      .navbar-nav .nav-link:last-child {
+         border-bottom: none;
+      }
    }
 
    /* Section */
@@ -562,21 +594,24 @@ footer .text-left {
       font-size: 18px;
       margin-bottom: 12px;
    }
-    #pricing{
-        padding: 20px 20px;
-    }
-    #pricing h2 {
-        font-size: 24px;
-    }
 
-    
-    .table {
-        font-size: 14px;
-    }
+   #pricing {
+      padding: 20px 20px;
+   }
 
-    .table th, .table td {
-        padding: 10px;
-    }
+   #pricing h2 {
+      font-size: 24px;
+   }
+
+   .table {
+      font-size: 14px;
+   }
+
+   .table th,
+   .table td {
+      padding: 10px;
+   }
+
    .content p {
       font-size: 14px;
       margin-bottom: 8px;
@@ -588,15 +623,18 @@ footer .text-left {
       height: 50px;
       margin-right: 10px;
    }
+
    .benefit {
       flex-direction: column;
       align-items: center;
    }
+
    .benefit i {
       font-size: 2.5rem;
       margin-bottom: 0.5rem;
       margin-right: 0;
    }
+
    #benefit h3 {
       font-size: 16px;
    }
@@ -668,6 +706,7 @@ footer .text-left {
       padding: 0 20px;
       max-width: 80%;
    }
+
    .card ul li {
       font-size: 12px;
       margin-bottom: 6px;
@@ -717,20 +756,22 @@ footer .text-left {
       border-radius: 5px;
       border: 1px solid #ccc;
    }
-     footer .col-md-6 {
-        flex: 0 0 100%;
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
 
-    footer {
-        text-align: center;
-    }
+   footer .col-md-6 {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-bottom: 20px;
+   }
 
-    footer .text-left {
-        text-align: center;
-    }
+   footer {
+      text-align: center;
+   }
+
+   footer .text-left {
+      text-align: center;
+   }
 }
+
 @media only screen and (max-width: 576px) {
    #rentalForm {
       max-width: 100%;
@@ -742,17 +783,19 @@ footer .text-left {
       font-size: 12px;
    }
 }
+
 @media (max-width: 480px) {
    #terms h2 {
       font-size: 18px;
       padding: 0 10px;
       max-width: 95%;
    }
-       footer h2 {
-        font-size: 18px;
-    }
 
-    footer p {
-        font-size: 12px;
-    }
+   footer h2 {
+      font-size: 18px;
+   }
+
+   footer p {
+      font-size: 12px;
+   }
 }
