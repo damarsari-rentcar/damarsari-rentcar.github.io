@@ -585,7 +585,7 @@ footer .text-left {
       color: #fff;
       padding: 10px 20px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      background-color: #343a40;
+      background-color: #43484d00;
    }
 
    .navbar-nav .nav-link:last-child {
@@ -596,13 +596,6 @@ footer .text-left {
       background-color: #343a40;
    }
 
-   .navbar-nav .nav-link[href^="#"]:hover {
-      background-color: #212529;
-   }
-
-   .navbar-nav .nav-link[href^="#"]:active {
-      background-color: #343a40; 
-   }
 
 
    /* Section */
