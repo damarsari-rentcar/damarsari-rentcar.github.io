@@ -13,11 +13,11 @@ body {
 }
 
 h1.text-light {
-    font-size: 26px; /* Atur ukuran font h1 */
+    font-size: 26px;
 }
 
 p.text-light {
-    font-size: 14px; /* Atur ukuran font paragraf */
+    font-size: 14px; 
 }
 
 .container {
@@ -132,7 +132,7 @@ h2 {
 }
 
 #benefits h3 {
-    font-size: 24px; /* Atur ukuran font untuk h3 */
+    font-size: 24px;
 }
 
 .benefit h4 {
@@ -157,11 +157,11 @@ h2 {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Menambahkan transisi pada hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 #choose-us h2 {
-    font-size: 24px; /* Sesuaikan ukuran font h2 */
+    font-size: 24px; 
     color: #343a40;
     margin-bottom: 20px;
 }
@@ -187,7 +187,7 @@ h2 {
 }
 
 #choose-us .highlight:hover p {
-    transform: translateY(-3px); /* Memberikan sedikit efek transisi pada teks saat hover */
+    transform: translateY(-3px); 
 }
 
 
