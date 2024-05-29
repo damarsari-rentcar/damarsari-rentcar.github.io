@@ -33,12 +33,15 @@ p.text-light {
    margin-bottom: 20px;
    margin-top: 20px;
 }
+
 .carousel-inner {
-   margin-top: 30px; 
+   margin-top: 30px;
 }
+
 .content {
    margin-top: 20px;
 }
+
 .content p {
    text-align: justify;
    margin-bottom: 15px;
@@ -117,7 +120,7 @@ h2 {
    font-weight: 400;
    line-height: 1.6;
    color: #555;
-   
+
 }
 
 /* Benefit */
@@ -565,7 +568,7 @@ footer .text-left {
 }
 
 @media (max-width: 767px) {
-   .navbar-brand {
+    .navbar-brand {
       margin-right: 0;
    }
 
@@ -576,18 +579,31 @@ footer .text-left {
    .navbar-nav {
       flex-direction: column;
       padding-top: 20px;
-
-      .navbar-nav .nav-link {
-         color: #fff;
-         padding: 10px 20px;
-         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-         background-color: #343a40;
-      }
-
-      .navbar-nav .nav-link:last-child {
-         border-bottom: none;
-      }
    }
+
+   .navbar-nav .nav-link {
+      color: #fff;
+      padding: 10px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: #343a40;
+   }
+
+   .navbar-nav .nav-link:last-child {
+      border-bottom: none;
+   }
+
+   .navbar-nav .nav-link[href^="#"] {
+      background-color: #343a40;
+   }
+
+   .navbar-nav .nav-link[href^="#"]:hover {
+      background-color: #212529;
+   }
+
+   .navbar-nav .nav-link[href^="#"]:active {
+      background-color: #343a40; 
+   }
+
 
    /* Section */
    h2 {
