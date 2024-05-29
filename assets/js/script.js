@@ -9,7 +9,7 @@ document
       const rentalType = document.getElementById("rentalType").value;
       const schedule = document.getElementById("schedule").value;
 
-      const message = `Halo Damarsari Rent Car, saya ingin menyewa mobil dengan detail berikut:\n\nNama: ${name}\nNomor Telepon: ${phone}\nTipe Mobil: ${carType}\nTipe Rental: ${rentalType}\nJadwal Rental: ${schedule}`;
+      const message = `Halo tim Damarsari Rent Car,\n\nSaya ingin menyewa mobil dengan detail sebagai berikut:\n\nNama: ${name}\nNomor Telepon: ${phone}\nTipe Mobil: ${carType}\nTipe Rental: ${rentalType}\nJadwal Rental: ${schedule}\n\nMohon untuk dikonfirmasi. Terima kasih.`;
 
       const whatsappUrl = `https://wa.me/6287788332232?text=${encodeURIComponent(
          message
