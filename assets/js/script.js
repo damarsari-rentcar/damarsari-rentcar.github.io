@@ -17,7 +17,7 @@ const cars = [
    {
       name: "Fortuner",
       price: "1,500,000",
-      image: "/assets/img/fortuner.png",
+      image: "/assets/img/fortunerr.png",
       description: "Robust SUV perfect for both city and off-road adventures",
       features: [
          "7 seats",
@@ -73,7 +73,7 @@ const cars = [
    {
       name: "Xpander",
       price: "500,000",
-      image: "assets/img/xpander.png",
+      image: "/assets/img/xpander.png",
       description: "Stylish MPV with modern design and practical features",
       features: [
          "7 seats",
@@ -87,7 +87,7 @@ const cars = [
    {
       name: "Terios",
       price: "500,000",
-      image: "assets/img/terios.jpg",
+      image: "/assets/img/terios.png",
       description: "Compact SUV ideal for city driving and light off-road use",
       features: [
          "7 seats",
@@ -101,7 +101,7 @@ const cars = [
    {
       name: "Rush",
       price: "500,000",
-      image: "assets/img/rush.jpg",
+      image: "/assets/img/rush.png",
       description: "Versatile SUV with sporty design and practical features",
       features: [
          "7 seats",
@@ -115,7 +115,7 @@ const cars = [
    {
       name: "Avanza (Matic)",
       price: "450,000",
-      image: "assets/img/avanza-matic.jpg",
+      image: "/assets/img/avanza-matic.png",
       description:
          "Popular MPV with automatic transmission for easy city driving",
       features: [
@@ -130,7 +130,7 @@ const cars = [
    {
       name: "Avanza (Manual)",
       price: "350,000",
-      image: "assets/img/avanza-manual.jpg",
+      image: "/assets/img/avanza-manual.png",
       description: "Reliable MPV with manual transmission for more control",
       features: [
          "7 seats",
@@ -144,7 +144,7 @@ const cars = [
    {
       name: "Xenia (Manual)",
       price: "350,000",
-      image: "assets/img/xenia.jpg",
+      image: "/assets/img/xenia.png",
       description: "Affordable MPV with good fuel economy and practicality",
       features: [
          "7 seats",
