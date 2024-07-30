@@ -17,7 +17,7 @@ const cars = [
    {
       name: "Fortuner",
       price: "1,500,000",
-      image: "/assets/img/fortunerr.png",
+      image: "/assets/img/fortuner.png",
       description: "Robust SUV perfect for both city and off-road adventures",
       features: [
          "7 seats",
@@ -171,30 +171,29 @@ function populateCarGrid(carsToShow) {
       .map(
          (car) => `
         <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:scale-105 group">
-            <div class="relative overflow-hidden">
-                <img src="${car.image}" alt="${car.name}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <button onclick="openCarDetailsModal('${car.name}')" class="bg-white text-primary px-4 py-2 rounded-full font-semibold hover:bg-primary hover:text-white transition duration-300 transform hover:scale-105">
-                        View Details
-                    </button>
-                </div>
+          <div class="relative overflow-hidden">
+            <img src="${car.image}" alt="${car.name}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <button onclick="openCarDetailsModal('${car.name}')" class="bg-white text-primary px-4 py-2 rounded-full font-medium hover:bg-primary hover:text-white transition duration-300 transform hover:scale-105">
+                View Details
+              </button>
             </div>
-            <div class="p-6">
-                <h3 class="text-xl font-semibold mb-2 text-primary group-hover:text-secondary transition-colors duration-300">${car.name}</h3>
-                <p class="text-gray-600 mb-4 group-hover:text-gray-800 transition-colors duration-300 line-clamp-2">${car.description}</p>
-                <div class="flex justify-between items-center">
-                    <p class="text-lg font-bold text-secondary group-hover:text-primary transition-colors duration-300">Rp. ${car.price} / day</p>
-                    <button onclick="openBookingModal('${car.name}');" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
-                        Book Now
-                    </button>
-                </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg sm:text-xl font-medium mb-2 text-primary group-hover:text-secondary transition-colors duration-300">${car.name}</h3>
+            <p class="text-sm sm:text-base text-gray-600 mb-4 group-hover:text-gray-800 transition-colors duration-300 line-clamp-2">${car.description}</p>
+            <div class="flex justify-between items-center">
+              <p class="text-base sm:text-lg font-medium text-secondary group-hover:text-primary transition-colors duration-300">Rp. ${car.price} / day</p>
+              <button onclick="openBookingModal('${car.name}');" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 text-sm sm:text-base">
+                Book Now
+              </button>
             </div>
+          </div>
         </div>
-    `
+      `
       )
       .join("");
 }
-
 function debounce(func, delay) {
    let timeoutId;
    return (...args) => {
