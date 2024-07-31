@@ -48,6 +48,7 @@
                      "gradient-y": "gradient-y 15s ease infinite",
                      "gradient-xy": "gradient-xy 15s ease infinite",
                      spin: "spin 4s linear infinite",
+                     shimmer: "shimmer 3s infinite",
                   },
                   fontSize: {
                      xs: "0.75rem",
@@ -79,6 +80,10 @@
                            "background-position": "right center",
                         },
                      },
+                     shimmer: {
+                        "0%": { transform: "translateX(-100%)" },
+                        "100%": { transform: "translateX(100%)" },
+                     },
                   },
                },
             },
@@ -91,14 +96,18 @@
    </head>
 
    <body class="font-sans bg-background text-gray-800">
-      <!-- Navigation -->
       <nav
-         class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300 backdrop-blur-md bg-opacity-80"
+         class="sticky top-0 z-50 transition-all duration-300 bg-white overflow-hidden"
       >
          <div
-            class="container mx-auto px-4 py-3 flex justify-between items-center"
+            class="container mx-auto px-4 py-3 flex justify-between items-center relative"
          >
-            <a href="index.html" class="group inline-block relative">
+            <!-- Light effect overlay -->
+            <div
+               class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shimmer"
+            ></div>
+
+            <a href="index.html" class="group inline-block relative z-10">
                <span
                   class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-highlight animate-gradient-x transition-all duration-300 group-hover:scale-105 font-sans"
                >
@@ -107,11 +116,8 @@
                <span
                   class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary via-accent to-highlight transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                ></span>
-               <span
-                  class="absolute -inset-1 bg-gradient-to-r from-primary/20 via-accent/20 to-highlight/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-               ></span>
             </a>
-            <div class="hidden md:flex space-x-6" id="navLinks">
+            <div class="hidden md:flex space-x-6 z-10" id="navLinks">
                <a
                   href="#home"
                   class="text-primary hover:text-accent transition-colors duration-300 nav-link relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 text-base font-medium"
@@ -134,7 +140,7 @@
                >
             </div>
             <button
-               class="md:hidden text-2xl text-primary transition-transform duration-300 hover:rotate-90 hover:text-accent"
+               class="md:hidden text-2xl text-primary transition-transform duration-300 hover:rotate-90 hover:text-accent z-10"
                id="mobileMenuBtn"
             >
                <i class="fas fa-car"></i>
@@ -191,17 +197,17 @@
             id="heroContent"
          >
             <h1
-               class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white leading-tight opacity-0 transform translate-y-4 transition-all duration-1000 ease-out font-serif"
+               class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 text-white leading-tight opacity-0 transform translate-y-4 transition-all duration-1000 ease-out font-serif"
             >
                Your Journey, Our Wheels
             </h1>
             <p
-               class="text-xl sm:text-2xl text-highlight mb-6 opacity-0 transform translate-y-4 transition-all duration-1000 ease-out delay-300"
+               class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-highlight mb-4 sm:mb-6 opacity-0 transform translate-y-4 transition-all duration-1000 ease-out delay-300"
             >
                From City Explorers to Luxury Cruisers
             </p>
             <p
-               class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 md:mb-10 text-gray-200 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed opacity-0 transform translate-y-4 transition-all duration-1000 ease-out delay-400 font-light"
+               class="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-10 text-gray-200 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed opacity-0 transform translate-y-4 transition-all duration-1000 ease-out delay-400 font-light"
             >
                Discover Jakarta in comfort and style. From compact cars to
                luxury vehicles, we have the perfect ride for your needs.
@@ -211,13 +217,13 @@
             >
                <a
                   href="#car-search"
-                  class="inline-block bg-accent text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-lg sm:text-xl hover:bg-highlight transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-accent/50"
+                  class="inline-block bg-accent text-white px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-4 rounded-full font-bold text-base sm:text-lg md:text-xl hover:bg-highlight transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-accent/50"
                >
                   Explore Jakarta's Best Fleet
                </a>
                <a
                   href="#contact"
-                  class="inline-block bg-transparent border-2 border-white text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-lg sm:text-xl hover:bg-white hover:text-primary transition duration-300 transform hover:scale-105 mt-4 sm:mt-0 hover:shadow-lg hover:shadow-white/30"
+                  class="inline-block bg-transparent border-2 border-white text-white px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-4 rounded-full font-bold text-base sm:text-lg md:text-xl hover:bg-white hover:text-primary transition duration-300 transform hover:scale-105 mt-4 sm:mt-0 hover:shadow-lg hover:shadow-white/30"
                >
                   Contact Us
                </a>
@@ -229,7 +235,7 @@
          >
             <a href="#cars" class="text-white animate-bounce">
                <svg
-                  class="w-12 h-12"
+                  class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -855,63 +861,83 @@
             </div>
          </div>
       </div>
-
       <!-- Car Details Modal -->
       <div
          id="carDetailsModal"
-         class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50 px-4 sm:px-0"
+         class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50 p-4 overflow-y-auto"
       >
          <div
-            class="bg-white rounded-xl overflow-hidden shadow-2xl w-full max-w-4xl transform transition-all duration-300 scale-95 opacity-0"
+            class="bg-white rounded-2xl overflow-hidden shadow-2xl w-full max-w-4xl transform transition-all duration-300 scale-95 opacity-0 my-8"
             id="carDetailsContent"
          >
-            <div class="relative">
+            <!-- Image Section -->
+            <div class="relative h-48 sm:h-64 md:h-80 lg:h-96">
                <img
                   id="carDetailsImage"
                   src=""
                   alt=""
-                  class="w-full h-64 sm:h-80 object-cover"
+                  class="w-full h-full object-cover transition-all duration-300"
                />
                <div
-                  class="absolute inset-0 bg-gradient-to-t from-black to-transparent"
+                  class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"
                ></div>
                <button
                   onclick="closeCarDetailsModal()"
-                  class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors duration-300"
+                  class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors duration-300 bg-black/30 hover:bg-black/50 rounded-full p-2"
                >
-                  <i class="fas fa-times text-2xl"></i>
+                  <i class="fas fa-times text-xl"></i>
                </button>
                <h3
                   id="carDetailsTitle"
-                  class="absolute bottom-4 left-6 text-3xl font-bold text-white"
+                  class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 text-2xl sm:text-3xl md:text-4xl font-bold text-white drop-shadow-lg"
                ></h3>
             </div>
-            <div class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
-               <div>
+
+            <!-- Content Section -->
+            <div
+               class="p-4 sm:p-6 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8"
+            >
+               <!-- Description and Features -->
+               <div class="space-y-4">
                   <p
                      id="carDetailsDescription"
-                     class="text-gray-600 text-base mb-4"
+                     class="text-gray-600 text-sm sm:text-base leading-relaxed"
                   ></p>
-                  <h4 class="font-semibold text-lg text-primary mb-2">
-                     Features:
-                  </h4>
-                  <ul
-                     id="carDetailsFeatures"
-                     class="text-sm text-gray-600 space-y-1 list-disc list-inside"
-                  ></ul>
+                  <div>
+                     <h4
+                        class="font-semibold text-lg text-primary mb-2 flex items-center"
+                     >
+                        <i class="fas fa-list-ul mr-2 text-accent"></i>
+                        Features:
+                     </h4>
+                     <ul
+                        id="carDetailsFeatures"
+                        class="text-sm text-gray-600 space-y-1"
+                     >
+                        <!-- Features will be dynamically added here -->
+                     </ul>
+                  </div>
                </div>
-               <div class="flex flex-col justify-between">
-                  <div class="bg-gray-100 p-4 rounded-lg text-center mb-4">
+
+               <!-- Pricing and Booking -->
+               <div
+                  class="flex flex-col justify-between space-y-4 sm:space-y-6"
+               >
+                  <div
+                     class="bg-gradient-to-br from-gray-100 to-gray-200 p-4 sm:p-6 rounded-xl text-center shadow-inner"
+                  >
                      <p class="text-sm text-gray-500 mb-1">Daily Rate</p>
-                     <p class="text-3xl font-bold text-primary">
+                     <p
+                        class="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
+                     >
                         Rp. <span id="carDetailsPrice"></span>
                      </p>
                   </div>
                   <button
                      onclick="openBookingModalFromDetails()"
-                     class="bg-primary hover:bg-secondary text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center"
+                     class="w-full bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-base sm:text-lg"
                   >
-                     <i class="fas fa-calendar-alt mr-2"></i> Book Now
+                     <i class="fas fa-calendar-alt mr-2 sm:mr-3"></i> Book Now
                   </button>
                </div>
             </div>

@@ -158,42 +158,45 @@ const cars = [
 ];
 
 // DOM elements
-const carGrid = document.getElementById("carGrid");
-const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-const carSearch = document.getElementById("carSearch");
-const noResults = document.getElementById("noResults");
-const bookingForm = document.getElementById("bookingForm");
+const carGrid = document.getElementById("carGrid"); // Grid container for car cards
+const mobileMenuBtn = document.getElementById("mobileMenuBtn"); // Mobile menu toggle button
+const mobileMenu = document.getElementById("mobileMenu"); // Mobile menu container
+const carSearch = document.getElementById("carSearch"); // Car search input field
+const noResults = document.getElementById("noResults"); // No results message element
+const bookingForm = document.getElementById("bookingForm"); // Booking form element
 
 // Functions
+// Populates the car grid in the "Our Premium Fleet" section
 function populateCarGrid(carsToShow) {
    carGrid.innerHTML = carsToShow
       .map(
          (car) => `
-        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:scale-105 group">
-          <div class="relative overflow-hidden">
-            <img src="${car.image}" alt="${car.name}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
-            <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <button onclick="openCarDetailsModal('${car.name}')" class="bg-white text-primary px-4 py-2 rounded-full font-medium hover:bg-primary hover:text-white transition duration-300 transform hover:scale-105">
-                View Details
-              </button>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-lg sm:text-xl font-medium mb-2 text-primary group-hover:text-secondary transition-colors duration-300">${car.name}</h3>
-            <p class="text-sm sm:text-base text-gray-600 mb-4 group-hover:text-gray-800 transition-colors duration-300 line-clamp-2">${car.description}</p>
-            <div class="flex justify-between items-center">
-              <p class="text-base sm:text-lg font-medium text-secondary group-hover:text-primary transition-colors duration-300">Rp. ${car.price} / day</p>
-              <button onclick="openBookingModal('${car.name}');" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 text-sm sm:text-base">
-                Book Now
-              </button>
-            </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:scale-105 group">
+        <div class="relative overflow-hidden">
+          <img src="${car.image}" alt="${car.name}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
+          <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <button onclick="openCarDetailsModal('${car.name}')" class="bg-white text-primary px-4 py-2 rounded-full font-medium hover:bg-primary hover:text-white transition duration-300 transform hover:scale-105">
+              View Details
+            </button>
           </div>
         </div>
-      `
+        <div class="p-6">
+          <h3 class="text-lg sm:text-xl font-medium mb-2 text-primary group-hover:text-secondary transition-colors duration-300">${car.name}</h3>
+          <p class="text-sm sm:text-base text-gray-600 mb-4 group-hover:text-gray-800 transition-colors duration-300 line-clamp-2">${car.description}</p>
+          <div class="flex justify-between items-center">
+            <p class="text-base sm:text-lg font-medium text-secondary group-hover:text-primary transition-colors duration-300">Rp. ${car.price} / day</p>
+            <button onclick="openBookingModal('${car.name}');" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 text-sm sm:text-base">
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+    `
       )
       .join("");
 }
+
+// Debounce function to limit the rate of search input processing
 function debounce(func, delay) {
    let timeoutId;
    return (...args) => {
@@ -202,6 +205,7 @@ function debounce(func, delay) {
    };
 }
 
+// Debounced search function for the car search input
 const debouncedSearch = debounce((searchTerm) => {
    const filteredCars = cars.filter(
       (car) =>
@@ -212,6 +216,7 @@ const debouncedSearch = debounce((searchTerm) => {
    noResults.classList.toggle("hidden", filteredCars.length > 0);
 }, 300);
 
+// Opens the booking modal when "Book Now" is clicked on a car card
 function openBookingModal(carName) {
    document.getElementById("modalTitle").textContent = `Book ${carName}`;
    document.getElementById("carType").value = carName;
@@ -223,6 +228,7 @@ function openBookingModal(carName) {
    }, 10);
 }
 
+// Closes the booking modal
 function closeModal() {
    const modalContent = document.getElementById("modalContent");
    modalContent.classList.add("scale-95", "opacity-0");
@@ -231,6 +237,7 @@ function closeModal() {
    }, 300);
 }
 
+// Opens the car details modal when "View Details" is clicked on a car card
 function openCarDetailsModal(carName) {
    const car = cars.find((c) => c.name === carName);
    document.getElementById("carDetailsTitle").textContent = car.name;
@@ -253,6 +260,7 @@ function openCarDetailsModal(carName) {
    }, 10);
 }
 
+// Closes the car details modal
 function closeCarDetailsModal() {
    const modalContent = document.getElementById("carDetailsContent");
    modalContent.classList.add("scale-95", "opacity-0");
@@ -261,6 +269,7 @@ function closeCarDetailsModal() {
    }, 300);
 }
 
+// Opens the booking modal from the car details modal
 function openBookingModalFromDetails() {
    const carName = document.getElementById("carDetailsTitle").textContent;
    closeCarDetailsModal();
@@ -269,6 +278,7 @@ function openBookingModalFromDetails() {
    }, 300);
 }
 
+// Validates the booking form fields
 function validateForm() {
    const requiredFields = ["name", "phone", "rentalType", "rentalDate"];
    return requiredFields.every((field) => {
@@ -279,6 +289,7 @@ function validateForm() {
    });
 }
 
+// Shows a confirmation message after successful booking
 function showBookingConfirmation() {
    const confirmation = document.createElement("div");
    confirmation.className =
@@ -292,6 +303,7 @@ function showBookingConfirmation() {
    }, 5000);
 }
 
+// Smooth scroll function for navigation links
 function smoothScroll(targetId) {
    const target = document.getElementById(targetId);
    if (target) {
@@ -302,6 +314,7 @@ function smoothScroll(targetId) {
    }
 }
 
+// Highlights the current section in the navigation menu
 function highlightCurrentSection() {
    const sections = document.querySelectorAll("section");
    const navLinks = document.querySelectorAll(".nav-link");
@@ -322,6 +335,7 @@ function highlightCurrentSection() {
    });
 }
 
+// Animates elements when they come into view during scrolling
 function animateOnScroll() {
    const elements = document.querySelectorAll(
       ".animate-fade-in-left, .animate-fade-in-right"
@@ -334,6 +348,7 @@ function animateOnScroll() {
    });
 }
 
+// Focuses on the search input when scrolling to the car search section
 function focusSearchOnScroll() {
    const searchSection = document.getElementById("car-search");
    const searchInput = document.getElementById("carSearch");
@@ -347,14 +362,17 @@ function focusSearchOnScroll() {
 }
 
 // Event Listeners
+// Toggle mobile menu visibility
 mobileMenuBtn.addEventListener("click", () =>
    mobileMenu.classList.toggle("hidden")
 );
 
+// Handle car search input
 carSearch.addEventListener("input", (e) =>
    debouncedSearch(e.target.value.toLowerCase())
 );
 
+// Handle booking form submission
 bookingForm.addEventListener("submit", (e) => {
    e.preventDefault();
    if (!validateForm()) return;
@@ -380,6 +398,7 @@ bookingForm.addEventListener("submit", (e) => {
    showBookingConfirmation();
 });
 
+// Add smooth scroll behavior to navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
    anchor.addEventListener("click", (e) => {
       e.preventDefault();
@@ -387,6 +406,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
    });
 });
 
+// Handle scroll events for section highlighting and animations
 window.addEventListener("scroll", () => {
    highlightCurrentSection();
    animateOnScroll();
@@ -403,6 +423,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const heroElements = heroContent.children;
    const scrollIndicator = document.querySelector("#home a[href='#cars']");
 
+   // Animate hero content elements on page load
    setTimeout(() => {
       Array.from(heroElements).forEach((el, index) => {
          setTimeout(() => {
@@ -411,6 +432,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
    }, 100);
 
+   // Parallax effect for hero content on scroll
    window.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
       const translateY = scrollY * 0.5;
@@ -429,7 +451,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
    });
 
-   // Smooth scroll for the scroll indicator
+   // Smooth scroll for the scroll indicator in the hero section
    scrollIndicator.addEventListener("click", (e) => {
       e.preventDefault();
       const targetId = scrollIndicator.getAttribute("href").substring(1);
