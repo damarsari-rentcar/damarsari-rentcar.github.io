@@ -438,13 +438,4 @@ document.addEventListener("DOMContentLoaded", () => {
          targetElement.scrollIntoView({ behavior: "smooth" });
       }
    });
-
-   // Improve animation of the scroll indicator
-   const arrowSVG = scrollIndicator.querySelector("svg");
-   setInterval(() => {
-      arrowSVG.classList.add("animate-bounce");
-      setTimeout(() => {
-         arrowSVG.classList.remove("animate-bounce");
-      }, 1000);
-   }, 3000);
 });
