@@ -378,18 +378,17 @@ bookingForm.addEventListener("submit", (e) => {
    if (!validateForm()) return;
 
    const formData = new FormData(bookingForm);
-   const message = `Hello Damarsari Rent Car team,\n\nI would like to rent a car with the following details:\n\n============================\n      Booking Details\n============================\n\n* Name: *${formData.get(
+  const message = `Halo tim Damarsari Rent Car,\n\nSaya ingin menyewa mobil dengan rincian berikut:\n\n============================\n      Detail Pemesanan\n============================\n\n* Nama: *${formData.get(
       "name"
-   )}*\n* Phone Number: *${formData.get(
+   )}*\n* Nomor Telepon: *${formData.get(
       "phone"
-   )}*\n* Car Model: *${formData.get(
+   )}*\n* Model Mobil: *${formData.get(
       "carType"
-   )}*\n* Rental Type: *${formData.get(
+   )}*\n* Jenis Sewa: *${formData.get(
       "rentalType"
-   )}*\n* Rental Date: *${formData.get(
+   )}*\n* Tanggal Sewa: *${formData.get(
       "rentalDate"
-   )}*\n\n============================\n\nPlease confirm my booking. Thank you.`;
-
+   )}*\n\n============================\n\nMohon konfirmasi pemesanan saya. Terima kasih.`;
    window.open(
       `https://wa.me/6287788332232?text=${encodeURIComponent(message)}`,
       "_blank"
