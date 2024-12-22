@@ -76,7 +76,7 @@ const cars = [
    },
    {
       name: "Innova Zenix",
-      price: "800,000",
+      price: "850,000",
       image: "assets/img/innova-zenix.png",
       description: "Latest generation of the popular MPV with improved comfort",
       descriptionId:
