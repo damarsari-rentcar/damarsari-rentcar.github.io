@@ -27,6 +27,10 @@
          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
          rel="stylesheet"
       />
+      <link
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css"
+      />
       <script>
          tailwind.config = {
             theme: {
@@ -49,6 +53,8 @@
                      "gradient-xy": "gradient-xy 15s ease infinite",
                      spin: "spin 4s linear infinite",
                      shimmer: "shimmer 3s infinite",
+                     slideIn: "slideIn 0.3s ease-out forwards",
+                     slideOut: "slideOut 0.3s ease-in forwards",
                   },
                   fontSize: {
                      xs: "0.75rem",
@@ -84,102 +90,208 @@
                         "0%": { transform: "translateX(-100%)" },
                         "100%": { transform: "translateX(100%)" },
                      },
+                     slideIn: {
+                        "0%": {
+                           transform: "translateY(-10%)",
+                           opacity: "0",
+                        },
+                        "100%": {
+                           transform: "translateY(0)",
+                           opacity: "1",
+                        },
+                     },
+                     slideOut: {
+                        "0%": {
+                           transform: "translateY(0)",
+                           opacity: "1",
+                        },
+                        "100%": {
+                           transform: "translateY(-10%)",
+                           opacity: "0",
+                        },
+                     },
+                  },
+                  // Standardized spacing system
+                  spacing: {
+                     4: "1rem", // 16px
+                     6: "1.5rem", // 24px
+                     8: "2rem", // 32px
+                     10: "2.5rem", // 40px
+                  },
+                  // Consistent typography scale
+                  fontSize: {
+                     sm: ["0.875rem", "1.25rem"], // 14px
+                     base: ["1rem", "1.5rem"], // 16px
+                     lg: ["1.125rem", "1.75rem"], // 18px
+                     xl: ["1.25rem", "1.75rem"], // 20px
+                     "2xl": ["1.5rem", "2rem"], // 24px
+                     "3xl": ["1.875rem", "2.25rem"], // 30px
+                     "4xl": ["2.25rem", "2.5rem"], // 36px
+                  },
+                  // Standard breakpoints
+                  screens: {
+                     sm: "640px",
+                     md: "768px",
+                     lg: "1024px",
+                     xl: "1280px",
                   },
                },
             },
-            variants: {
-               extend: {},
-            },
-            plugins: [],
          };
       </script>
    </head>
 
    <body class="font-sans bg-background text-gray-800">
       <nav
-         class="sticky top-0 z-50 transition-all duration-300 bg-white overflow-hidden"
+         class="sticky top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-md border-b border-gray-200"
       >
          <div
-            class="container mx-auto px-4 py-3 flex justify-between items-center relative"
+            class="container mx-auto px-3 py-2 sm:py-3 flex justify-between items-center relative"
          >
-            <!-- Light effect overlay -->
-            <div
-               class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-shimmer"
-            ></div>
-
-            <a href="index.html" class="group inline-block relative z-10">
-               <span
-                  class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-highlight animate-gradient-x transition-all duration-300 group-hover:scale-105 font-sans"
-               >
-                  Damarsari Rent Car
-               </span>
-               <span
-                  class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary via-accent to-highlight transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
-               ></span>
-            </a>
-            <div class="hidden md:flex space-x-6 z-10" id="navLinks">
-               <a
-                  href="#home"
-                  class="text-primary hover:text-accent transition-colors duration-300 nav-link relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 text-base font-medium"
-                  >Home</a
-               >
-               <a
-                  href="#car-search"
-                  class="text-primary hover:text-accent transition-colors duration-300 nav-link relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 text-base font-medium"
-                  >Our Cars</a
-               >
-               <a
-                  href="#about"
-                  class="text-primary hover:text-accent transition-colors duration-300 nav-link relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 text-base font-medium"
-                  >About Us</a
-               >
-               <a
-                  href="#contact"
-                  class="text-primary hover:text-accent transition-colors duration-300 nav-link relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 text-base font-medium"
-                  >Contact</a
-               >
+            <!-- Logo and Language Switcher -->
+            <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+               <a href="index.html" class="group inline-block relative z-10">
+                  <span
+                     class="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-highlight animate-gradient-x transition-all duration-300 group-hover:scale-105 font-sans"
+                  >
+                     Damarsari Rent Car
+                  </span>
+                  <span
+                     class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary via-accent to-highlight transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                  ></span>
+               </a>
+               <div class="flex gap-1.5 sm:gap-2 ml-2">
+                  <button
+                     onclick="changeLang('id')"
+                     class="lang-btn flex items-center gap-1 px-2 py-1 rounded-lg border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg text-xs sm:text-sm transform hover:scale-105"
+                     data-lang="id"
+                  >
+                     <span
+                        class="fi fi-id text-xs sm:text-sm md:text-base"
+                     ></span>
+                     ID
+                  </button>
+                  <button
+                     onclick="changeLang('en')"
+                     class="lang-btn flex items-center gap-1 px-2 py-1 rounded-lg border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg text-xs sm:text-sm transform hover:scale-105"
+                     data-lang="en"
+                  >
+                     <span
+                        class="fi fi-gb text-xs sm:text-sm md:text-base"
+                     ></span>
+                     EN
+                  </button>
+               </div>
             </div>
+
+            <!-- Desktop Navigation Links -->
+            <div
+               class="hidden md:flex items-center space-x-4 lg:space-x-6 z-10"
+            >
+               <!-- Navigation Links -->
+               <div class="flex items-center space-x-4 lg:space-x-6">
+                  <a
+                     href="#home"
+                     class="nav-link relative group flex items-center text-primary hover:text-accent transition-all duration-300 text-sm lg:text-base font-medium"
+                  >
+                     <span
+                        class="relative overflow-hidden"
+                        data-translate="nav.home"
+                     >
+                        Home
+                        <span
+                           class="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-primary via-accent to-highlight transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                        ></span>
+                     </span>
+                  </a>
+                  <a
+                     href="#car-search"
+                     class="nav-link relative group flex items-center text-primary hover:text-accent transition-all duration-300 text-sm lg:text-base font-medium"
+                  >
+                     <span
+                        class="relative overflow-hidden"
+                        data-translate="nav.ourCars"
+                     >
+                        Our Cars
+                        <span
+                           class="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-primary via-accent to-highlight transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                        ></span>
+                     </span>
+                  </a>
+                  <a
+                     href="#about"
+                     class="nav-link relative group flex items-center text-primary hover:text-accent transition-all duration-300 text-sm lg:text-base font-medium"
+                  >
+                     <span
+                        class="relative overflow-hidden"
+                        data-translate="nav.about"
+                     >
+                        About Us
+                        <span
+                           class="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-primary via-accent to-highlight transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                        ></span>
+                     </span>
+                  </a>
+                  <a
+                     href="#contact"
+                     class="nav-link relative group flex items-center text-primary hover:text-accent transition-all duration-300 text-sm lg:text-base font-medium"
+                  >
+                     <span
+                        class="relative overflow-hidden"
+                        data-translate="nav.contact"
+                     >
+                        Contact
+                        <span
+                           class="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-primary via-accent to-highlight transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                        ></span>
+                     </span>
+                  </a>
+               </div>
+            </div>
+
+            <!-- Mobile Menu Button (remove text, keep icon) -->
             <button
-               class="md:hidden text-2xl text-primary transition-transform duration-300 hover:rotate-90 hover:text-accent z-10"
+               class="md:hidden text-primary hover:text-accent transition-all duration-500 z-10"
                id="mobileMenuBtn"
             >
-               <i class="fas fa-car"></i>
+               <i
+                  class="fas fa-bars text-xl transform transition-transform duration-500"
+               ></i>
             </button>
          </div>
-         <!-- Mobile Menu -->
-         <div class="md:hidden hidden bg-white shadow-lg" id="mobileMenu">
-            <a
-               href="#home"
-               class="block py-2 px-4 text-primary hover:bg-secondary hover:text-white transition-colors duration-300 nav-link flex items-center"
+         <!-- Mobile Menu with enhanced styling -->
+         <div
+            class="md:hidden hidden bg-white/95 backdrop-blur-sm shadow-lg border-t border-gray-100 absolute top-full left-0 right-0 transition-all duration-300 origin-top"
+            id="mobileMenu"
+         >
+            <div
+               class="divide-y divide-gray-100 transform transition-all duration-300"
             >
-               <span class="mr-2 inline-block animate-spin"
-                  ><i class="fas fa-car-side text-highlight"></i></span
-               >Home
-            </a>
-            <a
-               href="#car-search"
-               class="block py-2 px-4 text-primary hover:bg-secondary hover:text-white transition-colors duration-300 nav-link flex items-center"
-            >
-               <span class="mr-2 inline-block animate-spin"
-                  ><i class="fas fa-car-side text-highlight"></i></span
-               >Our Cars
-            </a>
-            <a
-               href="#about"
-               class="block py-2 px-4 text-primary hover:bg-secondary hover:text-white transition-colors duration-300 nav-link flex items-center"
-            >
-               <span class="mr-2 inline-block animate-spin"
-                  ><i class="fas fa-car-side text-highlight"></i></span
-               >About Us
-            </a>
-            <a
-               href="#contact"
-               class="block py-2 px-4 text-primary hover:bg-secondary hover:text-white transition-colors duration-300 nav-link flex items-center"
-            >
-               <span class="mr-2 inline-block animate-spin"
-                  ><i class="fas fa-car-side text-highlight"></i></span
-               >Contact
-            </a>
+               <a
+                  href="#home"
+                  class="flex items-center py-3 px-4 text-primary hover:text-accent hover:bg-primary/5 active:bg-primary/10 transition-all duration-300 nav-link text-sm"
+               >
+                  <span data-translate="nav.home">Home</span>
+               </a>
+               <a
+                  href="#car-search"
+                  class="flex items-center py-3 px-4 text-primary hover:text-accent hover:bg-primary/5 active:bg-primary/10 transition-all duration-300 nav-link text-sm"
+               >
+                  <span data-translate="nav.ourCars">Our Cars</span>
+               </a>
+               <a
+                  href="#about"
+                  class="flex items-center py-3 px-4 text-primary hover:text-accent hover:bg-primary/5 active:bg-primary/10 transition-all duration-300 nav-link text-sm"
+               >
+                  <span data-translate="nav.about">About Us</span>
+               </a>
+               <a
+                  href="#contact"
+                  class="flex items-center py-3 px-4 text-primary hover:text-accent hover:bg-primary/5 active:bg-primary/10 transition-all duration-300 nav-link text-sm"
+               >
+                  <span data-translate="nav.contact">Contact</span>
+               </a>
+            </div>
          </div>
       </nav>
 
@@ -196,34 +308,41 @@
             class="container mx-auto px-4 text-center relative z-10 flex-grow flex flex-col justify-center"
             id="heroContent"
          >
+            <!-- Increased font sizes for better readability -->
             <h1
-               class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 text-white leading-tight opacity-0 transform translate-y-4 transition-all duration-1000 ease-out font-serif"
+               class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 text-white leading-tight opacity-0 transform translate-y-4 transition-all duration-1000 ease-out font-serif"
+               data-translate="hero.title"
             >
                Your Journey, Our Wheels
             </h1>
             <p
-               class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-highlight mb-4 sm:mb-6 opacity-0 transform translate-y-4 transition-all duration-1000 ease-out delay-300"
+               class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-highlight mb-6 sm:mb-8 opacity-0 transform translate-y-4 transition-all duration-1000 ease-out delay-300"
+               data-translate="hero.subtitle"
             >
                From City Explorers to Luxury Cruisers
             </p>
             <p
-               class="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-10 text-gray-200 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed opacity-0 transform translate-y-4 transition-all duration-1000 ease-out delay-400 font-light"
+               class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-8 sm:mb-10 text-gray-200 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto leading-relaxed opacity-0 transform translate-y-4 transition-all duration-1000 ease-out delay-400 font-light"
+               data-translate="hero.description"
             >
                Discover Jakarta in comfort and style. From compact cars to
                luxury vehicles, we have the perfect ride for your needs.
             </p>
+            <!-- Adjusted button text sizes and padding -->
             <div
                class="space-y-4 sm:space-y-0 sm:space-x-4 opacity-0 transform translate-y-4 transition-all duration-1000 ease-out delay-500"
             >
                <a
                   href="#car-search"
-                  class="inline-block bg-accent text-white px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-4 rounded-full font-bold text-base sm:text-lg md:text-xl hover:bg-highlight transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-accent/50"
+                  class="inline-block bg-accent text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full font-semibold text-sm sm:text-base md:text-lg hover:bg-highlight transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-accent/50"
+                  data-translate="hero.exploreButton"
                >
                   Explore Jakarta's Best Fleet
                </a>
                <a
                   href="#contact"
-                  class="inline-block bg-transparent border-2 border-white text-white px-6 sm:px-8 md:px-10 py-2 sm:py-3 md:py-4 rounded-full font-bold text-base sm:text-lg md:text-xl hover:bg-white hover:text-primary transition duration-300 transform hover:scale-105 mt-4 sm:mt-0 hover:shadow-lg hover:shadow-white/30"
+                  class="inline-block bg-transparent border-2 border-white text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full font-semibold text-sm sm:text-base md:text-lg hover:bg-white hover:text-primary transition duration-300 transform hover:scale-105 mt-4 sm:mt-0 hover:shadow-lg hover:shadow-white/30"
+                  data-translate="hero.contactButton"
                >
                   Contact Us
                </a>
@@ -231,11 +350,11 @@
          </div>
          <div
             id="scrollIndicator"
-            class="absolute inset-x-0 bottom-20 flex justify-center items-center z-10"
+            class="absolute inset-x-0 bottom-16 flex justify-center items-center z-10"
          >
             <a href="#cars" class="text-white animate-bounce">
                <svg
-                  class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
+                  class="w-6 sm:w-8 md:w-10 h-6 sm:h-8 md:h-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -255,11 +374,12 @@
       <!-- Car Search -->
       <section
          id="car-search"
-         class="py-12 bg-white shadow-md transition-all duration-300 focus-within:ring-2 focus-within:ring-primary focus-within:ring-opacity-50"
+         class="py-8 sm:py-10 bg-white shadow-md transition-all duration-300 focus-within:ring-2 focus-within:ring-primary focus-within:ring-opacity-50"
       >
          <div class="container mx-auto px-4">
             <h2
-               class="text-3xl sm:text-4xl md:text-5xl font-semibold text-center mb-8 sm:mb-12 text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent font-sans"
+               class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-8 sm:mb-12 text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent font-sans"
+               data-translate="search.title"
             >
                Find Your Perfect Ride
             </h2>
@@ -268,15 +388,20 @@
                   type="text"
                   id="carSearch"
                   placeholder="Search for a car..."
-                  class="w-full px-6 py-4 rounded-full border-2 border-gray-300 focus:outline-none focus:border-primary transition-all duration-300 hover:shadow-lg text-lg"
+                  class="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-full border-2 border-gray-300 focus:outline-none focus:border-primary transition-all duration-300 hover:shadow-lg text-xs sm:text-sm"
+                  data-translate="search.placeholder"
                />
                <button
-                  class="absolute right-4 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent transition-colors duration-300"
+                  class="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent transition-colors duration-300"
                >
-                  <i class="fas fa-search text-xl"></i>
+                  <i class="fas fa-search text-base sm:text-lg"></i>
                </button>
             </div>
-            <p id="noResults" class="text-red-500 mt-4 text-center hidden">
+            <p
+               id="noResults"
+               class="text-red-500 mt-4 text-center hidden"
+               data-translate="search.noResults"
+            >
                No cars found. Please try a different search term.
             </p>
          </div>
@@ -286,12 +411,13 @@
       <section id="cars" class="py-20 bg-gray-50">
          <div class="container mx-auto px-4">
             <h2
-               class="text-3xl sm:text-4xl md:text-5xl font-semibold text-center mb-8 sm:mb-12 text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent font-sans"
+               class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-8 sm:mb-12 text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent font-sans"
+               data-translate="cars.title"
             >
                Our Premium Fleet
             </h2>
             <div
-               class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+               class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
                id="carGrid"
             >
                <!-- Car cards will be dynamically inserted here -->
@@ -306,74 +432,90 @@
       >
          <div class="container mx-auto px-4">
             <h2
-               class="text-3xl sm:text-4xl md:text-5xl font-semibold text-center mb-8 sm:mb-12 text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent font-sans"
+               class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-8 sm:mb-12 text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent font-sans"
+               data-translate="benefits.title"
             >
                Our Benefits
             </h2>
             <div
-               class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10"
+               class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
             >
                <div
-                  class="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer"
+                  class="bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group cursor-pointer overflow-hidden relative"
                >
                   <div
-                     class="text-4xl sm:text-5xl text-accent mb-4 group-hover:scale-110 transition-all duration-300"
+                     class="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  ></div>
+                  <div
+                     class="text-3xl sm:text-4xl md:text-5xl text-accent mb-4 sm:mb-6 flex items-center justify-center relative z-10"
                   >
                      <i
-                        class="fas fa-award group-hover:rotate-12 transition-transform duration-300"
+                        class="fas fa-award transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 group-hover:text-primary"
                      ></i>
                   </div>
                   <h3
-                     class="text-base sm:text-lg font-medium mb-3 text-primary group-hover:text-secondary transition-colors duration-300"
+                     class="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-primary relative z-10 transition-colors duration-500 group-hover:text-secondary"
+                     data-translate="benefits.experiencedTeam"
                   >
                      Experienced Team
                   </h3>
                   <p
-                     class="text-sm sm:text-base text-gray-700 group-hover:text-gray-900 transition-colors duration-300"
+                     class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed relative z-10 transition-colors duration-500 group-hover:text-gray-900"
+                     data-translate="benefits.experiencedTeamDesc"
                   >
                      Our seasoned professionals ensure a seamless rental
                      experience, backed by years of industry expertise.
                   </p>
                </div>
                <div
-                  class="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer"
+                  class="bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group cursor-pointer overflow-hidden relative"
                >
                   <div
-                     class="text-4xl sm:text-5xl text-accent mb-4 group-hover:scale-110 transition-all duration-300"
+                     class="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  ></div>
+                  <div
+                     class="text-3xl sm:text-4xl md:text-5xl text-accent mb-4 sm:mb-6 flex items-center justify-center relative z-10"
                   >
                      <i
-                        class="fas fa-map-marked-alt group-hover:rotate-12 transition-transform duration-300"
+                        class="fas fa-handshake transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 group-hover:text-primary"
                      ></i>
                   </div>
                   <h3
-                     class="text-lg sm:text-xl font-semibold mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+                     class="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-primary relative z-10 transition-colors duration-500 group-hover:text-secondary"
+                     data-translate="benefits.flexibleServices"
                   >
                      Flexible Services
                   </h3>
                   <p
-                     class="text-sm sm:text-base text-gray-700 group-hover:text-gray-900 transition-colors duration-300"
+                     class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed relative z-10 transition-colors duration-500 group-hover:text-gray-900"
+                     data-translate="benefits.flexibleServicesDesc"
                   >
                      Enjoy convenient pick-up and drop-off options tailored to
                      your schedule and location preferences.
                   </p>
                </div>
                <div
-                  class="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer"
+                  class="bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group cursor-pointer overflow-hidden relative"
                >
                   <div
-                     class="text-4xl sm:text-5xl text-accent mb-4 group-hover:scale-110 transition-all duration-300"
+                     class="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  ></div>
+                  <div
+                     class="text-3xl sm:text-4xl md:text-5xl text-accent mb-4 sm:mb-6 flex items-center justify-center relative z-10"
                   >
                      <i
-                        class="fas fa-shield-alt group-hover:rotate-12 transition-transform duration-300"
+                        class="fas fa-shield-alt transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 group-hover:text-primary"
                      ></i>
                   </div>
                   <h3
-                     class="text-lg sm:text-xl font-semibold mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+                     class="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-primary relative z-10 transition-colors duration-500 group-hover:text-secondary"
+                     data-translate="benefits.safetyFirst"
                   >
                      Safety First
                   </h3>
                   <p
-                     class="text-sm sm:text-base text-gray-700 group-hover:text-gray-900 transition-colors duration-300"
+                     class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed relative z-10 transition-colors duration-500 group-hover:text-gray-900"
+                     data-translate="benefits.safetyFirstDesc"
                   >
                      Drive with confidence in our well-maintained vehicles
                      equipped with the latest safety features.
@@ -386,34 +528,37 @@
       <!-- Why Choose Us Section -->
       <section
          id="why-choose-us"
-         class="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white"
+         class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white"
       >
          <div class="container mx-auto px-4">
             <h2
-               class="text-3xl sm:text-4xl md:text-5xl font-semibold text-center mb-8 sm:mb-12 text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent font-sans"
+               class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-8 sm:mb-12 text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent font-sans"
+               data-translate="whyChooseUs.title"
             >
                Why Choose Us?
             </h2>
             <div
-               class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10"
+               class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8"
             >
                <div
-                  class="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
+                  class="bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
                >
                   <div
-                     class="text-4xl sm:text-5xl text-accent mb-4 group-hover:scale-110 transition-all duration-300 relative z-10"
+                     class="text-3xl sm:text-4xl md:text-5xl text-accent mb-4 sm:mb-6 flex items-center justify-center group"
                   >
                      <i
-                        class="fas fa-check-circle group-hover:rotate-12 transition-transform duration-300"
+                        class="fas fa-smile-beam transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
                      ></i>
                   </div>
                   <h3
-                     class="text-lg sm:text-xl font-semibold mb-4 text-primary group-hover:text-secondary transition-colors duration-300 relative z-10"
+                     class="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+                     data-translate="whyChooseUs.hassleFree"
                   >
                      Hassle-Free Experience
                   </h3>
                   <p
-                     class="text-sm sm:text-base text-gray-700 group-hover:text-gray-900 transition-colors duration-300 relative z-10"
+                     class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed"
+                     data-translate="whyChooseUs.hassleFreeDesc"
                   >
                      Enjoy stress-free travel with our skilled drivers and
                      seamless service.
@@ -423,22 +568,24 @@
                   ></div>
                </div>
                <div
-                  class="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
+                  class="bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
                >
                   <div
-                     class="text-4xl sm:text-5xl text-accent mb-4 group-hover:scale-110 transition-all duration-300 relative z-10"
+                     class="text-3xl sm:text-4xl md:text-5xl text-accent mb-4 sm:mb-6 flex items-center justify-center group"
                   >
                      <i
-                        class="fas fa-shield-alt group-hover:rotate-12 transition-transform duration-300"
+                        class="fas fa-shield-check transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
                      ></i>
                   </div>
                   <h3
-                     class="text-lg sm:text-xl font-semibold mb-4 text-primary group-hover:text-secondary transition-colors duration-300 relative z-10"
+                     class="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+                     data-translate="whyChooseUs.safety"
                   >
                      Guaranteed Safety
                   </h3>
                   <p
-                     class="text-sm sm:text-base text-gray-700 group-hover:text-gray-900 transition-colors duration-300 relative z-10"
+                     class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed"
+                     data-translate="whyChooseUs.safetyDesc"
                   >
                      Travel with peace of mind in our well-maintained and
                      insured vehicles.
@@ -448,22 +595,24 @@
                   ></div>
                </div>
                <div
-                  class="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
+                  class="bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
                >
                   <div
-                     class="text-4xl sm:text-5xl text-accent mb-4 group-hover:scale-110 transition-all duration-300 relative z-10"
+                     class="text-3xl sm:text-4xl md:text-5xl text-accent mb-4 sm:mb-6 flex items-center justify-center group"
                   >
                      <i
-                        class="fas fa-dollar-sign group-hover:rotate-12 transition-transform duration-300"
+                        class="fas fa-tags transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
                      ></i>
                   </div>
                   <h3
-                     class="text-lg sm:text-xl font-semibold mb-4 text-primary group-hover:text-secondary transition-colors duration-300 relative z-10"
+                     class="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+                     data-translate="whyChooseUs.competitivePricing"
                   >
                      Competitive Pricing
                   </h3>
                   <p
-                     class="text-sm sm:text-base text-gray-700 group-hover:text-gray-900 transition-colors duration-300 relative z-10"
+                     class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed"
+                     data-translate="whyChooseUs.competitivePricingDesc"
                   >
                      Get great value with our competitive rates and transparent
                      pricing.
@@ -473,22 +622,24 @@
                   ></div>
                </div>
                <div
-                  class="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
+                  class="bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
                >
                   <div
-                     class="text-4xl sm:text-5xl text-accent mb-4 group-hover:scale-110 transition-all duration-300 relative z-10"
+                     class="text-3xl sm:text-4xl md:text-5xl text-accent mb-4 sm:mb-6 flex items-center justify-center group"
                   >
                      <i
-                        class="fas fa-map-marked-alt group-hover:rotate-12 transition-transform duration-300"
+                        class="fas fa-clock transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
                      ></i>
                   </div>
                   <h3
-                     class="text-lg sm:text-xl font-semibold mb-4 text-primary group-hover:text-secondary transition-colors duration-300 relative z-10"
+                     class="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+                     data-translate="whyChooseUs.highFlexibility"
                   >
                      High Flexibility
                   </h3>
                   <p
-                     class="text-sm sm:text-base text-gray-700 group-hover:text-gray-900 transition-colors duration-300 relative z-10"
+                     class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed"
+                     data-translate="whyChooseUs.highFlexibilityDesc"
                   >
                      Enjoy flexible pick-up and drop-off options to suit your
                      schedule.
@@ -504,20 +655,24 @@
       <!-- About Section -->
       <section
          id="about"
-         class="py-20 bg-gradient-to-br from-white to-gray-100 overflow-hidden"
+         class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-white to-gray-100 overflow-hidden"
       >
          <div class="container mx-auto px-4">
             <h2
-               class="text-3xl sm:text-4xl md:text-5xl font-semibold text-center mb-8 sm:mb-12 text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent font-sans"
+               class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-8 sm:mb-12 text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent font-sans"
+               data-translate="about.title"
             >
                About Damarsari Rent Car
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div
+               class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center"
+            >
                <div
-                  class="space-y-6 transform hover:scale-105 transition-transform duration-300"
+                  class="space-y-4 sm:space-y-6 transform hover:scale-105 transition-transform duration-300"
                >
                   <p
-                     class="text-sm sm:text-base leading-relaxed text-gray-700 group-hover:text-gray-900 transition-colors duration-300"
+                     class="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-4 sm:mb-6"
+                     data-translate="about.description1"
                   >
                      Damarsari Rent Car is Jakarta's premier car rental service,
                      offering a diverse fleet of luxurious and comfortable
@@ -526,35 +681,43 @@
                      the industry.
                   </p>
                   <p
-                     class="text-sm sm:text-base leading-relaxed text-gray-700 group-hover:text-gray-900 transition-colors duration-300"
+                     class="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-4 sm:mb-6"
+                     data-translate="about.description2"
                   >
                      Whether you're planning a business trip, family vacation,
                      or special event, we have the perfect vehicle to make your
                      journey memorable and comfortable.
                   </p>
-                  <div class="mt-8">
+                  <div class="mt-6 sm:mt-8">
                      <a
                         href="#contact"
-                        class="inline-block bg-accent hover:bg-primary text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                        class="inline-block bg-accent hover:bg-primary text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                        data-translate="about.contactButton"
                      >
                         Contact Us
                      </a>
                   </div>
                </div>
-               <div class="grid grid-cols-2 gap-6 sm:gap-8">
+               <div class="grid grid-cols-2 gap-4 sm:gap-6">
                   <div
-                     class="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
+                     class="bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
                   >
-                     <i
-                        class="fas fa-car-side text-4xl sm:text-5xl text-accent mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10"
-                     ></i>
+                     <div
+                        class="text-3xl sm:text-4xl md:text-5xl text-accent mb-4 sm:mb-6 flex items-center justify-center group"
+                     >
+                        <i
+                           class="fas fa-car-alt transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
+                        ></i>
+                     </div>
                      <h4
-                        class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-primary group-hover:text-secondary transition-colors duration-300 relative z-10"
+                        class="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+                        data-translate="about.qualityFleet"
                      >
                         Quality Fleet
                      </h4>
                      <p
-                        class="text-sm sm:text-base text-gray-600 group-hover:text-gray-800 transition-colors duration-300 relative z-10"
+                        class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed"
+                        data-translate="about.qualityFleetDesc"
                      >
                         Wide selection of well-maintained vehicles
                      </p>
@@ -563,18 +726,24 @@
                      ></div>
                   </div>
                   <div
-                     class="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
+                     class="bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
                   >
-                     <i
-                        class="fas fa-user-tie text-4xl sm:text-5xl text-accent mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10"
-                     ></i>
+                     <div
+                        class="text-3xl sm:text-4xl md:text-5xl text-accent mb-4 sm:mb-6 flex items-center justify-center group"
+                     >
+                        <i
+                           class="fas fa-user-tie transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
+                        ></i>
+                     </div>
                      <h4
-                        class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-primary group-hover:text-secondary transition-colors duration-300 relative z-10"
+                        class="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+                        data-translate="about.professionalDrivers"
                      >
                         Professional Drivers
                      </h4>
                      <p
-                        class="text-sm sm:text-base text-gray-600 group-hover:text-gray-800 transition-colors duration-300 relative z-10"
+                        class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed"
+                        data-translate="about.professionalDriversDesc"
                      >
                         Experienced and courteous chauffeurs
                      </p>
@@ -583,18 +752,24 @@
                      ></div>
                   </div>
                   <div
-                     class="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
+                     class="bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
                   >
-                     <i
-                        class="fas fa-headset text-4xl sm:text-5xl text-accent mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10"
-                     ></i>
+                     <div
+                        class="text-3xl sm:text-4xl md:text-5xl text-accent mb-4 sm:mb-6 flex items-center justify-center group"
+                     >
+                        <i
+                           class="fas fa-headset transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
+                        ></i>
+                     </div>
                      <h4
-                        class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-primary group-hover:text-secondary transition-colors duration-300 relative z-10"
+                        class="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+                        data-translate="about.support"
                      >
                         24/7 Support
                      </h4>
                      <p
-                        class="text-sm sm:text-base text-gray-600 group-hover:text-gray-800 transition-colors duration-300 relative z-10"
+                        class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed"
+                        data-translate="about.supportDesc"
                      >
                         Round-the-clock customer assistance
                      </p>
@@ -603,18 +778,24 @@
                      ></div>
                   </div>
                   <div
-                     class="bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
+                     class="bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
                   >
-                     <i
-                        class="fas fa-hand-holding-usd text-4xl sm:text-5xl text-accent mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10"
-                     ></i>
+                     <div
+                        class="text-3xl sm:text-4xl md:text-5xl text-accent mb-4 sm:mb-6 flex items-center justify-center group"
+                     >
+                        <i
+                           class="fas fa-percentage transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
+                        ></i>
+                     </div>
                      <h4
-                        class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-primary group-hover:text-secondary transition-colors duration-300 relative z-10"
+                        class="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+                        data-translate="about.competitiveRates"
                      >
                         Competitive Rates
                      </h4>
                      <p
-                        class="text-sm sm:text-base text-gray-600 group-hover:text-gray-800 transition-colors duration-300 relative z-10"
+                        class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed"
+                        data-translate="about.competitiveRatesDesc"
                      >
                         Affordable prices for premium services
                      </p>
@@ -626,27 +807,34 @@
             </div>
          </div>
       </section>
+
       <!-- Contact Section -->
       <section
          id="contact"
-         class="py-20 bg-gradient-to-r from-primary to-secondary text-white"
+         class="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-primary to-secondary text-white"
       >
          <div class="container mx-auto px-4">
             <h2
-               class="text-3xl sm:text-4xl md:text-5xl font-semibold text-center mb-8 sm:mb-12 text-white font-display"
+               class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center mb-8 sm:mb-12 text-white font-sans"
+               data-translate="contact.title"
             >
                Contact Us
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
                <div class="animate-fade-in-left">
-                  <h3 class="text-2xl font-semibold mb-6">Get in Touch</h3>
+                  <h3
+                     class="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6"
+                     data-translate="contact.getInTouch"
+                  >
+                     Get in Touch
+                  </h3>
                   <p
                      class="mb-4 flex items-center hover:text-accent transition-colors duration-300 group"
                   >
                      <i
-                        class="fas fa-map-marker-alt mr-4 text-2xl group-hover:rotate-45 transition-transform duration-300"
+                        class="fas fa-map-marker-alt mr-4 text-xl sm:text-2xl group-hover:rotate-45 transition-transform duration-300"
                      ></i>
-                     <span
+                     <span data-translate="contact.address"
                         >Jl. Damarsari II 39-53, RT.5/RW.7, Jati Padang, Ps.
                         Minggu, Jakarta Selatan, DKI Jakarta 12540</span
                      >
@@ -655,7 +843,7 @@
                      class="mb-4 flex items-center hover:text-accent transition-colors duration-300 group"
                   >
                      <i
-                        class="fas fa-phone mr-4 text-2xl group-hover:rotate-45 transition-transform duration-300"
+                        class="fas fa-phone mr-4 text-xl sm:text-2xl group-hover:rotate-45 transition-transform duration-300"
                      ></i>
                      <span>+62 877-8833-2232</span>
                   </p>
@@ -663,7 +851,7 @@
                      class="mb-4 flex items-center hover:text-accent transition-colors duration-300 group"
                   >
                      <i
-                        class="fas fa-envelope mr-4 text-2xl group-hover:rotate-45 transition-transform duration-300"
+                        class="fas fa-envelope mr-4 text-xl sm:text-2xl group-hover:rotate-45 transition-transform duration-300"
                      ></i>
                      <span>info@damarsarirentcar.com</span>
                   </p>
@@ -672,7 +860,7 @@
                   <iframe
                      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d991.458775578927!2d106.83138826961527!3d-6.285395166563015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMTcnMDcuNCJTIDEwNsKwNDknNTUuMyJF!5e0!3m2!1sid!2sid!4v1716918277652!5m2!1sid!2sid"
                      width="100%"
-                     height="400"
+                     height="300"
                      style="border: 0"
                      allowfullscreen=""
                      loading="lazy"
@@ -698,7 +886,7 @@
                   <i class="fab fa-facebook"></i>
                </a>
                <a
-                  href="#"
+                  href="https://www.instagram.com/damarsari_rentcar"
                   class="text-2xl hover:text-accent transition-colors duration-300 transform hover:scale-110"
                >
                   <i class="fab fa-instagram"></i>
@@ -757,104 +945,118 @@
                      </svg>
                   </button>
                </div>
-               <form id="bookingForm" class="space-y-6">
+               <form id="bookingForm" class="space-y-4 sm:space-y-6">
                   <input type="hidden" id="carType" name="carType" />
-                  <div class="space-y-4">
+                  <div class="space-y-3 sm:space-y-4">
+                     <!-- Name Input -->
                      <div class="relative group">
                         <input
                            type="text"
                            id="name"
                            name="name"
                            required
-                           class="peer w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder-transparent bg-white"
+                           class="peer w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder-transparent bg-white"
                         />
                         <label
                            for="name"
-                           class="absolute left-4 top-2 text-gray-600 text-sm transition-all duration-300 -translate-y-6 scale-75 transform z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 peer-focus:text-primary group-hover:text-secondary"
-                           >Name</label
+                           class="absolute left-3 sm:left-4 -top-2 text-xs sm:text-sm text-gray-600 transition-all duration-300 transform z-10 origin-[0] bg-white px-1 peer-placeholder-shown:text-gray-500 peer-focus:text-primary peer-focus:text-xs sm:peer-focus:text-sm"
+                           data-translate="booking.name"
                         >
-                        <div
-                           class="absolute inset-0 w-0 bg-secondary opacity-20 transition-all duration-500 group-hover:w-full"
-                        ></div>
+                           Name
+                        </label>
                      </div>
+
+                     <!-- Phone Input -->
                      <div class="relative group">
                         <input
                            type="tel"
                            id="phone"
                            name="phone"
                            required
-                           class="peer w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder-transparent bg-white"
+                           class="peer w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder-transparent bg-white"
                         />
                         <label
                            for="phone"
-                           class="absolute left-4 top-2 text-gray-600 text-sm transition-all duration-300 -translate-y-6 scale-75 transform z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 peer-focus:text-primary group-hover:text-secondary"
-                           >Phone Number</label
+                           class="absolute left-3 sm:left-4 -top-2 text-xs sm:text-sm text-gray-600 transition-all duration-300 transform z-10 origin-[0] bg-white px-1 peer-placeholder-shown:text-gray-500 peer-focus:text-primary peer-focus:text-xs sm:peer-focus:text-sm"
+                           data-translate="booking.phone"
                         >
-                        <div
-                           class="absolute inset-0 w-0 bg-secondary opacity-20 transition-all duration-500 group-hover:w-full"
-                        ></div>
+                           Phone Number
+                        </label>
                      </div>
+
+                     <!-- Rental Type Select -->
                      <div class="relative group">
                         <select
                            id="rentalType"
                            name="rentalType"
                            required
-                           class="peer w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 appearance-none bg-white"
+                           class="peer w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 appearance-none bg-white cursor-pointer"
                         >
                            <option value="" disabled selected></option>
-                           <option value="Daily">Daily</option>
-                           <option value="Weekly">Weekly</option>
-                           <option value="Monthly">Monthly</option>
+                           <option value="Daily" data-translate="booking.daily">
+                              Daily
+                           </option>
+                           <option
+                              value="Weekly"
+                              data-translate="booking.weekly"
+                           >
+                              Weekly
+                           </option>
+                           <option
+                              value="Monthly"
+                              data-translate="booking.monthly"
+                           >
+                              Monthly
+                           </option>
                         </select>
                         <label
                            for="rentalType"
-                           class="absolute left-4 top-2 text-gray-600 text-sm transition-all duration-300 -translate-y-6 scale-75 transform z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 peer-focus:text-primary group-hover:text-secondary"
-                           >Rental Type</label
+                           class="absolute left-3 sm:left-4 -top-2 text-xs sm:text-sm text-gray-600 transition-all duration-300 transform z-10 origin-[0] bg-white px-1 peer-placeholder-shown:text-gray-500 peer-focus:text-primary peer-focus:text-xs sm:peer-focus:text-sm"
+                           data-translate="booking.rentalType"
                         >
+                           Rental Type
+                        </label>
+                        <!-- Dropdown Icon -->
                         <div
-                           class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                           class="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center"
                         >
                            <svg
-                              class="fill-current h-4 w-4 transition-transform duration-300 group-hover:rotate-180"
-                              xmlns="http://www.w3.org/2000/svg"
+                              class="w-4 h-4 sm:w-5 sm:h-5 text-gray-500"
+                              fill="currentColor"
                               viewBox="0 0 20 20"
                            >
-                              <path
-                                 d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                              />
+                              <path d="M7 10l5 5 5-5H7z" />
                            </svg>
                         </div>
-                        <div
-                           class="absolute inset-0 w-0 bg-secondary opacity-20 transition-all duration-500 group-hover:w-full"
-                        ></div>
                      </div>
+
+                     <!-- Date Input -->
                      <div class="relative group">
                         <input
                            type="date"
                            id="rentalDate"
                            name="rentalDate"
                            required
-                           class="peer w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder-transparent bg-white"
+                           class="peer w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder-transparent bg-white cursor-pointer"
                         />
                         <label
                            for="rentalDate"
-                           class="absolute left-4 top-2 text-gray-600 text-sm transition-all duration-300 -translate-y-6 scale-75 transform z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 peer-focus:text-primary group-hover:text-secondary"
-                           >Rental Date</label
+                           class="absolute left-3 sm:left-4 -top-2 text-xs sm:text-sm text-gray-600 transition-all duration-300 transform z-10 origin-[0] bg-white px-1 peer-placeholder-shown:text-gray-500 peer-focus:text-primary peer-focus:text-xs sm:peer-focus:text-sm"
+                           data-translate="booking.rentalDate"
                         >
-                        <div
-                           class="absolute inset-0 w-0 bg-secondary opacity-20 transition-all duration-500 group-hover:w-full"
-                        ></div>
+                           Rental Date
+                        </label>
                      </div>
                   </div>
-                  <div class="flex justify-end">
+
+                  <!-- Submit Button -->
+                  <div class="mt-6 sm:mt-8">
                      <button
                         type="submit"
-                        class="w-full bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-lg hover:from-accent hover:to-accent transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 shadow-md hover:shadow-lg relative overflow-hidden group"
+                        class="w-full bg-gradient-to-r from-primary to-secondary text-white px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-medium rounded-lg hover:from-accent hover:to-accent transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 shadow-md hover:shadow-lg"
+                        data-translate="booking.submit"
                      >
-                        <span class="relative z-10">Book Now</span>
-                        <div
-                           class="absolute inset-0 scale-0 rounded-lg transition-all duration-300 group-hover:scale-100 bg-white opacity-20"
-                        ></div>
+                        Book Now
                      </button>
                   </div>
                </form>
@@ -943,6 +1145,8 @@
             </div>
          </div>
       </div>
+      <script src="assets/js/translations.js"></script>
+      <script src="assets/js/cars.js"></script>
+      <script src="assets/js/script.js"></script>
    </body>
-   <script src="assets/js/script.js"></script>
 </html>
