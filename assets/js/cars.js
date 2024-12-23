@@ -1,8 +1,33 @@
 const cars = [
    {
-      name: "Alphard",
+      name: "Alphard Hev 2024",
+      price: "3,500,000",
+      image: "assets/img/alphard-Hev2024.png",
+      description: "Luxury MPV with spacious interior and premium features",
+      descriptionId: "MPV Mewah dengan interior luas dan fitur premium",
+      features: {
+         en: [
+            "7-8 seats",
+            "Automatic transmission",
+            "Premium sound system",
+            "Leather seats",
+            "Dual sunroof",
+            "Power sliding doors",
+         ],
+         id: [
+            "7-8 kursi",
+            "Transmisi otomatis",
+            "Sistem audio premium",
+            "Jok kulit",
+            "Dual sunroof",
+            "Pintu geser elektrik",
+         ],
+      },
+   },
+   {
+      name: "Alphard 2021 - 2023",
       price: "2,500,000",
-      image: "assets/img/alphard.png",
+      image: "assets/img/alphard-2123.png",
       description: "Luxury MPV with spacious interior and premium features",
       descriptionId: "MPV Mewah dengan interior luas dan fitur premium",
       features: {
@@ -102,7 +127,7 @@ const cars = [
    },
    {
       name: "Innova Reborn",
-      price: "600,000",
+      price: "650,000",
       image: "assets/img/innova-reborn.png",
       description: "Reliable and spacious MPV for family trips",
       descriptionId: "MPV andal dan luas untuk perjalanan keluarga",
